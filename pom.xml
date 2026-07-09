@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.github.iamexhausted.nullsectorgame.nullsectorgit/com.github.iamexhausted.nullsectorgame.nullsectorgit.HelloApplication
+                                com.github.iamexhausted.nullsectorgame.nullsectorgit/com.github.iamexhausted.nullsectorgame.MainApp
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
