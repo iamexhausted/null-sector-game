@@ -7,7 +7,10 @@ package com.github.iamexhausted.nullsectorgame.model.image_system;
  * and runtime-loaded dimensions of the image.
  */
 public enum ImgId {
+    // --- PLAYER ---
+    PLAYER_IDLE_1("hero/hero_idle/hero_idle1.png"),
 
+    // --- OTHER ---
     PLATFORM("platform/platform.png");
 
     private final String imgName;
