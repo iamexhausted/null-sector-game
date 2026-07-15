@@ -9,6 +9,7 @@ public class Player extends Entity {
     private double vy = 0;
 
     // constants
+    private final double MAX_SPEED = 5;
     private final double ACCELERATION = 0.5;
     private final double FRICTION = 0.9;
 
@@ -57,6 +58,15 @@ public class Player extends Entity {
     }
 
     /**
+     * Limits horizontal velocity
+     * to maximum movement speed.
+     */
+    private void clampVelocity() {
+        if (vx > MAX_SPEED) vx = MAX_SPEED;
+        if (vx < -MAX_SPEED) vx = -MAX_SPEED;
+    }
+
+    /**
      * Applies ground friction.
      * <p>
      * Prevents infinite sliding movement.
@@ -78,6 +88,9 @@ public class Player extends Entity {
      * - movement update
      */
     private void applyPhysics() {
+        // limiting speed
+        clampVelocity();
+
         // friction
         applyFriction();
 
