@@ -20,6 +20,7 @@ public class MainApp extends Application {
 
         // --- 4. Stage ---
         stage.setTitle("Null Sector");
+        stage.setScene(gameView.getScene());
         stage.show();
 
         // --- 5. Game Loop ---

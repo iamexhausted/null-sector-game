@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class GameView {
 
-    private final double WIDTH = 1000;
-    private final double HEIGHT = 800;
+    private final double WIDTH = 2000;
+    private final double HEIGHT = 1000;
 
     private final Model model;
 
@@ -54,13 +54,17 @@ public class GameView {
 
         // --- WORLD ---
         for (Drawable d : model.getDrawables()) {
+            gc.save();
+
             Image img = images.get(d.imgId());
 
             gc.drawImage(
                     img,
-                    0,
-                    0
+                    d.x(),
+                    d.y()
             );
+
+            gc.restore();
         }
     }
 
