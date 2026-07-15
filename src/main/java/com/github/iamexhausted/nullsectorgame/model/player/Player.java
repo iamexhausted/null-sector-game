@@ -9,6 +9,7 @@ public class Player extends Entity {
     private double vy = 0;
 
     // constants
+    private final double GRAVITY =  0.1;
     private final double MAX_SPEED = 5;
     private final double ACCELERATION = 0.5;
     private final double FRICTION = 0.9;
@@ -16,6 +17,9 @@ public class Player extends Entity {
     // input flags
     private boolean moveRight;
     private boolean moveLeft;
+
+    // fall multiplier
+    private final double FALL_MULTIPLIER = 2;
 
     public Player(ImgId imgId, double x, double y) {
         final int MAX_HEALTH = 100;
@@ -84,10 +88,20 @@ public class Player extends Entity {
      * Applies movement physics.
      * <p>
      * Handles:
+     * - gravity
+     * - fall multiplier
      * - friction
      * - movement update
      */
     private void applyPhysics() {
+        // gravity
+        vy += GRAVITY;
+
+        // --- FALL MULTIPLIER ---
+        if (vy > 0) {
+            vy += GRAVITY * (FALL_MULTIPLIER - 1);
+        }
+
         // limiting speed
         clampVelocity();
 
