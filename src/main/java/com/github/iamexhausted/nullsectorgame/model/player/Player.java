@@ -8,6 +8,10 @@ public class Player extends Entity {
     private double vx = 0;
     private double vy = 0;
 
+    // constants
+    private final double ACCELERATION = 0.5;
+    private final double FRICTION = 0.9;
+
     // input flags
     private boolean moveRight;
     private boolean moveLeft;
@@ -22,8 +26,65 @@ public class Player extends Entity {
         this.setHitboxOffset(8, 0);
     }
 
+    /**
+     * Updates player state for current frame.
+     * <p>
+     * Handles horizontal movement.
+     *
+     * @param deltaTime frame delta time
+     */
     @Override
-    public void update(double deltaTime) {}
+    public void update(double deltaTime) {
+        applyInput();
+
+        applyPhysics();
+    }
+
+    /**
+     * Applies player input to movement system.
+     * <p>
+     * Handles movement acceleration.
+     */
+    private void applyInput() {
+
+        if (moveLeft) {
+            vx -= ACCELERATION;
+        }
+
+        if (moveRight) {
+            vx += ACCELERATION;
+        }
+    }
+
+    /**
+     * Applies ground friction.
+     * <p>
+     * Prevents infinite sliding movement.
+     */
+    private void applyFriction() {
+        vx *= FRICTION;
+
+        // to avoid constant gliding
+        if (Math.abs(vx) < 0.01) {
+            vx = 0;
+        }
+    }
+
+    /**
+     * Applies movement physics.
+     * <p>
+     * Handles:
+     * - friction
+     * - movement update
+     */
+    private void applyPhysics() {
+        // friction
+        applyFriction();
+
+        // movement
+        x += vx;
+        y += vy;
+    }
 
     public void setMoveRight(boolean moveRight) {
         this.moveRight = moveRight;
