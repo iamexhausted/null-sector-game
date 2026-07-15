@@ -8,6 +8,10 @@ public class Player extends Entity {
     private double vx = 0;
     private double vy = 0;
 
+    // input flags
+    private boolean moveRight;
+    private boolean moveLeft;
+
     public Player(ImgId imgId, double x, double y) {
         final int MAX_HEALTH = 100;
         final int DAMAGE = 15;
@@ -20,4 +24,12 @@ public class Player extends Entity {
 
     @Override
     public void update(double deltaTime) {}
+
+    public void setMoveRight(boolean moveRight) {
+        this.moveRight = moveRight;
+    }
+
+    public void setMoveLeft(boolean moveLeft) {
+        this.moveLeft = moveLeft;
+    }
 }
