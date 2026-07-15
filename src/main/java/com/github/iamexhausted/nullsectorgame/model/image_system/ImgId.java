@@ -8,7 +8,7 @@ package com.github.iamexhausted.nullsectorgame.model.image_system;
  */
 public enum ImgId {
 
-    ;
+    PLATFORM("platform/platform.png");
 
     private final String imgName;
     private double height, width;
