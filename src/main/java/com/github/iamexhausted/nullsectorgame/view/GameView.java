@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class GameView {
 
-    private final double WIDTH = 2000;
-    private final double HEIGHT = 1000;
+    private final double WIDTH = 1000;
+    private final double HEIGHT = 800;
 
     private final Model model;
 
