@@ -43,6 +43,8 @@ public class Player extends Entity {
         applyInput();
 
         applyPhysics();
+
+        updateFacingDirection();
     }
 
     /**
@@ -111,6 +113,20 @@ public class Player extends Entity {
         // movement
         x += vx;
         y += vy;
+    }
+
+    /**
+     * Updates player facing direction
+     * based on horizontal movement.
+     */
+    private void updateFacingDirection() {
+
+        if (vx > 0.1) {
+            facingRight = true;
+        }
+        else if (vx < -0.1) {
+            facingRight = false;
+        }
     }
 
     public void setMoveRight(boolean moveRight) {
